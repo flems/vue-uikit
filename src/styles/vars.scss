@@ -1,0 +1,112 @@
+@use 'sass:color';
+
+@function hsl-with-lightness($color, $new-lightness) {
+  @return hsl(
+    color.channel($color, 'hue', $space: hsl),
+    color.channel($color, 'saturation', $space: hsl),
+    $new-lightness
+  );
+}
+
+// Принятая шкала оттенков (светлота)
+$scale: (
+  50: 95%,
+  100: 90%,
+  200: 80%,
+  300: 70%,
+  400: 60%,
+  500: 50%,
+  // базовый
+  600: 40%,
+  700: 30%,
+  800: 20%,
+  900: 10%,
+);
+
+// Твои HEX-цвета
+$colors: (
+  'primary': #6a0dad,
+  'gray': #6b7280,
+  'success': #10b981,
+  'error': #ef4444,
+  'warning': #f59e0b,
+);
+
+// Генерация CSS-переменных
+:root {
+  @each $name, $color in $colors {
+    @each $tone, $lightness in $scale {
+      --color-#{$name}-#{$tone}: #{hsl-with-lightness($color, $lightness)};
+    }
+  }
+}
+
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* ——————————————————————————————————————
+     SEMANTIC COLORS
+     —————————————————————————————————————— */
+  --text-color-default: var(--color-gray-500);
+  --text-color-accent: var(--color-primary-600);
+
+  --bg-color-default: var(--color-gray-50);
+  --bg-color-accent: var(--color-primary-50);
+
+  --border-color-default: var(--color-gray);
+  --border-color-accent: var(--color-primary-500);
+
+  /* SPACING */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-s: 12px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 32px;
+  --space-xxl: 40px;
+
+  --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xxs: 0.625rem; /* 10px */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-xxl: 1.5rem; /* 24px */
+
+  --line-height-sm: 1.2;
+  --line-height-md: 1.5;
+
+  /* RADIUS */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+
+  /* SHADOWS */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+
+  /* TRANSITION */
+  --transition-fast: 100ms ease-in-out;
+  --transition-medium: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* Z-INDEX */
+  --z-index-1: 100;
+  --z-index-2: 200;
+  --z-index-3: 300;
+  --z-index-4: 400;
+  --z-index-5: 500;
+  --z-index-6: 600;
+  --z-index-7: 700;
+  --z-index-8: 800;
+  --z-index-9: 900;
+
+  /* BORDER */
+  --border-width-s: 1px;
+  --border-width-m: 2px;
+  --border-width-l: 4px;
+}

@@ -50,20 +50,43 @@ onBeforeUnmount(() =>
 
 <style lang="scss">
 .ui-tab-label {
-  padding: 8px 16px;
+  padding: var(--space-s) var(--space-l);
   cursor: pointer;
   scroll-snap-align: center;
-  width: 200px;
   display: block;
   flex-shrink: 0;
+  border: none;
+  background: var(--color-white);
+  transition: color 0.2s ease-in-out;
+  position: relative;
+  font-size: inherit;
+
+  &:after {
+    content: '';
+    height: var(--border-width-m);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: width 0.2s ease-in-out;
+    width: 0%;
+    background: var(--border-color-accent);
+    z-index: 1;
+  }
 
   &:hover {
-    background: #eee;
+    &:after {
+      width: 100%;
+    }
   }
 
   &.is-active {
-    color: rgb(75, 4, 4);
-    background: #d1d1d1;
+    color: var(--text-color-accent);
+
+    &:after {
+      width: 100%;
+    }
   }
 }
 </style>
