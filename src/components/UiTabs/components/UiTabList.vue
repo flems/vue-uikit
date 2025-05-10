@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-tabs-labels" role="tabpanel">
+  <div class="ui-tabs-labels">
     <button
       class="ui-tabs-labels__arrow"
       @click="scrollBy(-1)"

@@ -1,11 +1,14 @@
 <template>
   <div
-    class="ui-tab-content"
+    class="ui-tab-panel"
     :class="{
       'is-active': isVisible,
     }"
-    :data-name="name"
     v-show="isVisible"
+    :data-name="name"
+    role="tabpanel"
+    :id="`panel-${name}`"
+    :aria-labelledby="`tab-${name}`"
   >
     <slot v-if="isLoaded" />
   </div>

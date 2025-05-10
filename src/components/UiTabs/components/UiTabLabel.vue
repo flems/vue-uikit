@@ -4,11 +4,14 @@
     :class="{
       'is-active': isActive,
     }"
-    role="tab"
     :data-name="name"
     @click="onClick"
     ref="item"
+    type="button"
+    role="tab"
     :aria-selected="isActive"
+    :aria-controls="`panel-${name}`"
+    :id="`tab-${name}`"
   >
     <slot />
   </button>
