@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import type { ITabsContext } from '../context/types'
-import { defineProps, inject, withDefaults, computed, ref, onMounted, watch } from 'vue'
+import { defineProps, inject, computed, ref, onMounted, watch } from 'vue'
 import { TabsContextKey } from '../context/injectionKey'
 
 const props = withDefaults(

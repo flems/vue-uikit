@@ -97,7 +97,3 @@ describe('UiTabs Interaction', () => {
     expect(tabPanels[1]).toBeVisible()
   })
 })
-
-// to do
-// - проверить lazy
-// - проверить стрелки/скролл и все вокруг

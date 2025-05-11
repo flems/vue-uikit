@@ -10,6 +10,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UiAccordion: typeof import('./components/UiAccordion/components/UiAccordion.vue')['default']
+    UiAccordionHeader: typeof import('./components/UiAccordion/components/UiAccordionHeader.vue')['default']
+    UiAccordionItem: typeof import('./components/UiAccordion/components/UiAccordionItem.vue')['default']
+    UiAccordionPanel: typeof import('./components/UiAccordion/components/UiAccordionPanel.vue')['default']
     UiTabLabel: typeof import('./components/UiTabs/components/UiTabLabel.vue')['default']
     UiTabList: typeof import('./components/UiTabs/components/UiTabList.vue')['default']
     UiTabListPanels: typeof import('./components/UiTabs/components/UiTabListPanels.vue')['default']
