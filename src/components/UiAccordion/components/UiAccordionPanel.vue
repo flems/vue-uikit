@@ -19,5 +19,6 @@ const isLoaded = ref(true)
 
 <style lang="scss">
 .ui-accordion-panel {
+  padding: var(--space-m) var(--space-l);
 }
 </style>

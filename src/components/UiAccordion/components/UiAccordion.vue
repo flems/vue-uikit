@@ -61,4 +61,10 @@ provide(AccordionRootContextKey, {
 } satisfies IAccordionRootCotext)
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.ui-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+}
+</style>
