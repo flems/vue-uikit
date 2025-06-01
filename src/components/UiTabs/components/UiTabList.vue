@@ -1,5 +1,10 @@
 <template>
-  <div class="ui-tabs-labels">
+  <div
+    class="ui-tabs-labels"
+    :class="{
+      [`ui-tabs-labels--theme-${theme}`]: theme,
+    }"
+  >
     <button
       class="ui-tabs-labels__arrow"
       @click="scrollBy(-1)"
@@ -36,7 +41,7 @@ import { useThrottleFn } from '@/composable/useThrottleFn'
 const tabContext = inject<ITabsContext>(TabsContextKey)
 if (!tabContext) throw new Error('[ui-tab-label] missing TabsContext')
 
-const { tabList, activeTab } = tabContext
+const { tabList, activeTab, theme } = tabContext
 const container = ref<HTMLElement | null>(null)
 
 const activeTabNode = computed(() => tabList.value.find((el) => el.name === activeTab.value)?.node)
@@ -75,7 +80,9 @@ onBeforeUnmount(removeListeners)
 </script>
 
 <style lang="scss">
-.ui-tabs-labels {
+$parent: '.ui-tabs-labels';
+
+.ui-tabs-labels--theme-horizontal {
   display: flex;
   position: relative;
 
@@ -89,7 +96,7 @@ onBeforeUnmount(removeListeners)
     background: var(--color-gray-200);
   }
 
-  &__container {
+  #{$parent}__container {
     display: flex;
     gap: 1px;
     width: 100%;
@@ -109,7 +116,7 @@ onBeforeUnmount(removeListeners)
     }
   }
 
-  &__arrow {
+  #{$parent}__arrow {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,6 +144,43 @@ onBeforeUnmount(removeListeners)
       fill: currentColor;
       transition: fill 0.2s ease-in-out;
     }
+  }
+}
+
+.ui-tabs-labels--theme-vertical {
+  display: flex;
+  position: relative;
+  min-width: 180px;
+  width: 20%;
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--border-width-m);
+    height: 100%;
+    background: var(--border-color-default);
+  }
+
+  #{$parent}__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 200px;
+    overflow: auto;
+    width: 100%;
+
+    // SCROLL
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
 }
 </style>

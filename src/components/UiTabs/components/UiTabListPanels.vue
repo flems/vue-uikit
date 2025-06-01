@@ -4,9 +4,10 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style lang="scss">
 .ui-tabs-panels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>

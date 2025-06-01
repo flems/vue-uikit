@@ -3,6 +3,7 @@
     class="ui-tab-panel"
     :class="{
       'is-active': isVisible,
+      [`ui-tab-panel--theme-${theme}`]: theme,
     }"
     v-show="isVisible"
     :data-name="name"
@@ -30,7 +31,7 @@ const props = withDefaults(
 )
 const tabsContext = inject<ITabsContext>(TabsContextKey)
 if (!tabsContext) throw new Error('[ui-tab-panel] missing TabsContext')
-const { activeTab } = tabsContext
+const { activeTab, theme } = tabsContext
 
 const isVisible = computed(() => activeTab.value === props.name)
 const isLoaded = ref<boolean>(!props.lazy)
@@ -51,7 +52,16 @@ watch(
 </script>
 
 <style lang="scss">
-.ui-tab-content {
-  padding: 8px 16px;
+.ui-tab-panel {
+  &--theme-horizontal {
+    padding: var(--space-l) var(--space-l);
+    border-bottom: var(--border-width-s) solid var(--border-color-default);
+  }
+
+  &--theme-vertical {
+    background: var(--bg-color-default);
+    padding: var(--space-s) var(--space-l);
+    flex-grow: 1;
+  }
 }
 </style>

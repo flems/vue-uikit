@@ -19,7 +19,5 @@ declare module 'vue' {
     UiTabListPanels: typeof import('./components/UiTabs/components/UiTabListPanels.vue')['default']
     UiTabPanel: typeof import('./components/UiTabs/components/UiTabPanel.vue')['default']
     UiTabs: typeof import('./components/UiTabs/components/UiTabs.vue')['default']
-    UiTabsLabels: typeof import('./components/UiTabs/UiTabsLabels.vue')['default']
-    UiTabsPanels: typeof import('./components/UiTabs/UiTabsPanels.vue')['default']
   }
 }

@@ -3,7 +3,7 @@ import { scrollContainerToShowItem } from '@/utils/scrollContainerToShowItem'
 
 export const useTabsScroll = (
   container: Ref<HTMLElement | null>,
-  activeTabNode: ComputedRef<HTMLElement | null>,
+  activeTabNode: ComputedRef<HTMLElement | undefined>,
 ) => {
   const scrollLeftDisabled = ref(true)
   const scrollRightDisabled = ref(true)
